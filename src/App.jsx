@@ -5,13 +5,13 @@ import reactLogo from './assets/react.svg'
 import { useState } from 'react';
 const App = () => {
   const [todos, setTodos] = useState([
-    { id: 1, name: "Learning React" },
-    { id: 2, name: "Watching Youtube" }
+    // { id: 1, name: "Learning React" },
+    // { id: 2, name: "Watching Youtube" }
   ])
 
   const addNewTodo = (name) => {
     const newTodo = {
-      id: randomIntFromInterval(1, 100000),
+      id: randomIntFromInterval(1, 30),
       name
     }
     setTodos([...todos, newTodo])
@@ -28,13 +28,15 @@ const App = () => {
         <TodoNew
           addNewTodo={addNewTodo}
         />
-
-        <TodoData
-          todos={todos}
-        />
-        <div className="todo-image">
-          <img className='logo' src={reactLogo} />
-        </div>
+        {todos.length > 0 ?
+          <TodoData
+            todos={todos}
+          />
+          :
+          <div className="todo-image">
+            <img className='logo' src={reactLogo} />
+          </div>
+        }
       </div>
     </>
   )

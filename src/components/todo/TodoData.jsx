@@ -1,11 +1,17 @@
 const TodoData = (props) => {
     console.log(">>>Check props: ", props);
-    const { name, todos } = props;
+    const { todos } = props;
     return (
         <div className="todo-list">
-            <div>
-                {JSON.stringify(todos)}
-            </div>
+            {todos.map((item) => {
+                return (
+                    <div className="todo-item" key={item.id}>
+                        {item.id} {""}
+                        {item.name}
+                        <button>Delete</button>
+                    </div>
+                )
+            })}
         </div>
     )
 }
